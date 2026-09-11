@@ -1,0 +1,20 @@
+-- ============================================================
+-- LAB DATABASE
+-- Migration: V4
+-- Description: Drop check constraint on PROCESSING_STATUS
+-- Database: Oracle
+-- ============================================================
+
+ALTER TABLE LAB_CRAWLED_RECORD
+    DROP CONSTRAINT CK_LAB_CRAWLED_RECORD_STATUS;
+ALTER TABLE LAB_USER
+    DROP CONSTRAINT CK_LAB_USER_ROLE;
+
+ALTER TABLE LAB_USER
+    DROP CONSTRAINT CK_LAB_USER_STATUS;
+
+ALTER TABLE LAB_DOMAIN
+    DROP CONSTRAINT CK_LAB_DOMAIN_STATUS;
+
+ALTER TABLE LAB_CHANNEL
+    DROP CONSTRAINT CK_LAB_CHANNEL_STATUS;
