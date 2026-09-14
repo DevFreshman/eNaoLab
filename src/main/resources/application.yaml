@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:oracle:thin:@//10.100.30.36:1521/ORCLPDB1
-    username: data_market
-    password: eNao@123.
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
     driver-class-name: oracle.jdbc.OracleDriver
   jpa:
     hibernate:
@@ -13,12 +13,12 @@ spring:
         dialect: org.hibernate.dialect.OracleDialect
   data:
     redis:
-      host: localhost
-      port: 6379
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
       timeout: 2000
 framework:
   infra:
     security:
       jwt:
-        secret: "lab-application-secret-key-min-32-characters"
-        ttl-seconds: 8300
+        secret: ${JWT_SECRET}
+        ttl-seconds: ${JWT_TTL_SECONDS:3600}
