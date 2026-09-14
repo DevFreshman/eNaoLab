@@ -1,4 +1,4 @@
-package org.com.lab.common;
+package org.com.lab.specification;
 
 import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;

@@ -1,7 +1,7 @@
 package org.com.lab.services;
 
-import org.com.lab.common.DynamicSpecificationBuilder;
-import org.com.lab.common.SearchCriteria;
+import org.com.lab.specification.DynamicSpecificationBuilder;
+import org.com.lab.specification.SearchCriteria;
 import org.com.lab.dto.request.CreateRecordRequest;
 import org.com.lab.dto.response.RecordResponse;
 import org.com.lab.entity.Channel;
@@ -11,6 +11,7 @@ import org.com.lab.error.LabErrorCode;
 import org.com.lab.repository.ChannelJpaRepository;
 import org.com.lab.repository.CrawledRecordJpaRepository;
 import org.example.javaframework.infra.security.CurrentUserContext;
+import org.example.javaframework.web.common.EnumConverter;
 import org.example.javaframework.web.exception.BusinessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -50,7 +51,7 @@ public class RecordServices {
         crawledRecord.setTitle(request.title());
         crawledRecord.setPublishedAt(request.publishAt());
         crawledRecord.setCrawledAt(request.crawledAt());
-        crawledRecord.setProcessingStatus(ProcessingStatus.fromString(request.processingStatus()));
+        crawledRecord.setProcessingStatus(EnumConverter.fromString(ProcessingStatus.class, request.processingStatus()));
         crawledRecord.setErrorMessage(request.errorMessage());
         crawledRecordJpaRepository.save(crawledRecord);
         return RecordResponse.from(crawledRecord);

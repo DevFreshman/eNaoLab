@@ -1,12 +1,12 @@
 package org.com.lab.services;
 
-import org.com.lab.common.EnumConverter;
 import org.com.lab.dto.request.CreateDomainRequest;
 import org.com.lab.dto.response.DomainResponse;
 import org.com.lab.entity.Domain;
 import org.com.lab.entity.enums.DomainStatus;
 import org.com.lab.repository.DomainJpaRepository;
 import org.example.javaframework.infra.security.CurrentUserContext;
+import org.example.javaframework.web.common.EnumConverter;
 import org.springframework.stereotype.Service;
 
 @Service

@@ -1,7 +1,7 @@
 package org.com.lab.services;
 
-import org.com.lab.common.DynamicSpecificationBuilder;
-import org.com.lab.common.SearchCriteria;
+import org.com.lab.specification.DynamicSpecificationBuilder;
+import org.com.lab.specification.SearchCriteria;
 import org.com.lab.dto.response.ChannelResponse;
 import org.com.lab.entity.Channel;
 import org.com.lab.error.LabErrorCode;
