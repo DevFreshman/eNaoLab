@@ -1,9 +1,11 @@
 package org.com.lab.dto.request;
 
+import jakarta.validation.constraints.NotBlank;
+
 public record RegisterRequest(
-        String username,
-        String email,
-        String password,
-        String role
+        @NotBlank String username,
+        @NotBlank String email,
+        @NotBlank String password,
+        @NotBlank String role
 ) {
 }

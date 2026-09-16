@@ -5,6 +5,7 @@ import org.com.lab.dto.request.RegisterRequest;
 import org.com.lab.dto.response.LoginResponse;
 import org.com.lab.services.AuthServices;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -18,9 +19,9 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    @ResponseStatus(HttpStatus.CREATED)
-    public void register(@RequestBody RegisterRequest registerRequest) {
+    public ResponseEntity<Void> register(@RequestBody RegisterRequest registerRequest) {
         authServices.register(registerRequest);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @PostMapping("/login")

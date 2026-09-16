@@ -14,6 +14,8 @@ import org.example.javaframework.web.exception.BusinessException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 public class AuthServices {
 
@@ -34,10 +36,11 @@ public class AuthServices {
         String email = registerRequest.email();
         String password = registerRequest.password();
         String role = registerRequest.role();
-        if(!userJpaRepository.existsByUsername(username)) {
+        if(userJpaRepository.existsByUsername(username)) {
             throw new BusinessException(LabErrorCode.USER_ALREADY_EXISTS, username);
         }
         User user = new User();
+        user.setId(UUID.randomUUID().toString().replace("-", "").substring(0, 25));
         user.setUsername(username);
         user.setEmail(email);
         user.setPasswordHash(passwordEncoder.encode(password));

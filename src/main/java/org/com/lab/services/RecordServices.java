@@ -30,8 +30,6 @@ public class RecordServices {
 
     private final UserServices userServices;
 
-    private final int MAX_LIMIT = 100;
-
     public RecordServices(ChannelJpaRepository channelJpaRepository,
                           CrawledRecordJpaRepository crawledRecordJpaRepository,
                           UserServices userServices) {
@@ -59,15 +57,6 @@ public class RecordServices {
 
 
     public Page<RecordResponse> getRecords(int page, int limit, Long domainId, Long channelId, String search) {
-        if (page < 1) {
-            throw new BusinessException(LabErrorCode.INVALID_INPUT, "page", page);
-        }
-        if (limit < 1 || limit > MAX_LIMIT) {
-            throw new BusinessException(LabErrorCode.INVALID_INPUT, "limit", limit);
-        }
-        if (domainId == null) {
-                throw new BusinessException(LabErrorCode.INVALID_INPUT, "domainId", "required");
-        }
 
             String userId = CurrentUserContext.get().userId();
             List<Long> allowedDomainIds = userServices.getActiveDomainOfUser(userId);

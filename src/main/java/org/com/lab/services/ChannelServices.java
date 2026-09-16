@@ -20,8 +20,6 @@ import java.util.List;
 @Service
 public class ChannelServices {
 
-    private static final int MAX_LIMIT = 100;
-
     private final ChannelJpaRepository channelRepository;
     private final UserServices userServices;
 
@@ -33,12 +31,6 @@ public class ChannelServices {
     public Page<ChannelResponse> listChannels(int page, int limit,
                                               String search, Long domainId) {
 
-        if (page < 1) {
-            throw new BusinessException(LabErrorCode.INVALID_INPUT, "page", page);
-        }
-        if (limit < 1 || limit > MAX_LIMIT) {
-            throw new BusinessException(LabErrorCode.INVALID_INPUT, "limit", limit);
-        }
         String userId = CurrentUserContext.get().userId();
         List<Long> allowedDomainIds = userServices.getActiveDomainOfUser(userId);
 
