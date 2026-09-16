@@ -1,10 +1,13 @@
 package org.com.lab.entity;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.com.lab.entity.enums.ChannelStatus;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -58,6 +61,8 @@ public class Channel {
     @Column(name = "CONFIG")
     private String config;
 
+    @CreationTimestamp
+    @Setter(AccessLevel.NONE)
     @Column(
             name = "CREATED_AT",
             nullable = false
@@ -70,6 +75,8 @@ public class Channel {
     )
     private String createdBy;
 
+    @UpdateTimestamp
+    @Setter(AccessLevel.NONE)
     @Column(name = "UPDATED_AT")
     private LocalDateTime updatedAt;
 

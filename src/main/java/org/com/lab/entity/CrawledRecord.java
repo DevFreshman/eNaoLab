@@ -1,6 +1,7 @@
 package org.com.lab.entity;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -61,6 +62,7 @@ public class CrawledRecord {
     private String errorMessage;
 
     @CreationTimestamp
+    @Setter(AccessLevel.NONE)
     @Column(
             name = "CREATED_AT",
             nullable = false

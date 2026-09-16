@@ -45,7 +45,6 @@ public class LabsController {
     }
 
     // API C: chỉ admin tạo domain — POST /lab/domains
-    // Quyền check qua @PreAuthorize("hasRole('ADMIN')") hoặc rule trong SecurityConfig (/admin/**)
     @PostMapping("admin/domains")
     public DomainResponse createDomain(@RequestBody CreateDomainRequest request ) {
         return domainServices.createDomain(request);

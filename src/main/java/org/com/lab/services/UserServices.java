@@ -2,7 +2,6 @@ package org.com.lab.services;
 
 import lombok.extern.slf4j.Slf4j;
 import org.com.lab.dto.response.UserInfoResponse;
-import org.com.lab.entity.Domain;
 import org.com.lab.entity.User;
 import org.com.lab.entity.UserDomain;
 import org.com.lab.error.LabErrorCode;
