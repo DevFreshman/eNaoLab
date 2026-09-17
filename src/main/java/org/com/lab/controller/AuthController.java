@@ -4,6 +4,7 @@ import org.com.lab.dto.request.LoginRequest;
 import org.com.lab.dto.request.RegisterRequest;
 import org.com.lab.dto.response.LoginResponse;
 import org.com.lab.services.AuthServices;
+import org.example.javaframework.web.api.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,9 +20,9 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<Void> register(@RequestBody RegisterRequest registerRequest) {
+    public Response<Void> register(@RequestBody RegisterRequest registerRequest) {
         authServices.register(registerRequest);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+        return Response.failure(HttpStatus.CREATED.toString(), "User registered successfully");
     }
 
     @PostMapping("/login")
